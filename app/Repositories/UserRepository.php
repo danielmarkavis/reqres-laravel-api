@@ -20,7 +20,6 @@ class UserRepository implements UserRepositoryInterface
             "page"     => $page,
             "per_page" => $per_page,
         ])->get($this->url)->throw()->object();
-
         return PaginateResource::make($response)->resolve();
     }
 
@@ -40,7 +39,7 @@ class UserRepository implements UserRepositoryInterface
     public function store(array $data): array
     {
         $response = Http::post($this->url, $data)->throw()->object();
-        return UserResource::make($response->data)->resolve();
+        return UserResource::make($response)->resolve();
     }
 
 }

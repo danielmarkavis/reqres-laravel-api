@@ -72,4 +72,29 @@ class HttpFakeTest extends TestCase
         );
     }
 
+    /** @test */
+    public function it_fakes_user_create_api_response(): void
+    {
+        $userNotFoundJson = File::json(base_path('/tests/json/user_create.json'));
+        Http::fake([
+            'https://reqres.in/api/users*' => Http::response($userNotFoundJson)]);
+
+        try {
+           $newUser = $this->userRepository->store([
+                "first_name" => "Laurence",
+                "last_name" => "Fishburne",
+                "job" => "leader",
+                "email" => "nebuchadnezzar@zion.com",
+                "avatar" => "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Morpheus.jpg/220px-Morpheus.jpg"
+            ]);
+        } catch (RequestException $e) {
+            $this->fail("An RequestException should not have been thrown by the provided Closure. ".$e->getMessage());
+        }
+
+        $this->assertEquals(
+            'Laurence',
+            $newUser['first_name']
+        );
+    }
+
 }

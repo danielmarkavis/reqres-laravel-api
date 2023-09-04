@@ -59,8 +59,11 @@ class UserController extends Controller
     {
         try {
             $data = $this->userRepository->store([
-                'name' => 'Bubba Dale',
-                'job' => 'Baseball Pitcher'
+                "first_name" => "Laurence",
+                "last_name" => "Fishburne",
+                "job" => "leader",
+                "email" => "nebuchadnezzar@zion.com",
+                "avatar" => "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Morpheus.jpg/220px-Morpheus.jpg"
             ]);
         } catch (RequestException $e) {
             abort( response(["message"=>$e->getMessage()], Response::HTTP_NOT_FOUND) );

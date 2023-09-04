@@ -1,6 +1,9 @@
 {
-  "name": "morpheus",
+  "first_name": "Laurence",
+  "last_name": "Fishburne",
   "job": "leader",
-  "id": "604",
-  "createdAt": "2023-09-04T11:19:16.150Z"
+  "email": "nebuchadnezzar@zion.com",
+  "avatar": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Morpheus.jpg/220px-Morpheus.jpg",
+  "id": "738",
+  "createdAt": "2023-09-04T13:26:02.197Z"
 }

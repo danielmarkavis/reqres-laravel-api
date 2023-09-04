@@ -61,4 +61,24 @@ class HttpIntegrationTest extends TestCase
         );
     }
 
+    /** @test */
+    public function it_gets_user_create_api_response(): void
+    {
+        try {
+            $newUser = $this->userRepository->store([
+                "first_name" => "Laurence",
+                "last_name" => "Fishburne",
+                "job" => "leader",
+                "email" => "nebuchadnezzar@zion.com",
+                "avatar" => "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Morpheus.jpg/220px-Morpheus.jpg"
+            ]);
+        } catch (RequestException $e) {
+            $this->fail("An RequestException should not have been thrown by the provided Closure. ".$e->getMessage());
+        }
+
+        $this->assertEquals(
+            'Laurence',
+            $newUser['first_name']
+        );
+    }
 }
